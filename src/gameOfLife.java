@@ -1,4 +1,4 @@
-import java.util.concurrent.TimeUnit;
+import java.io.InputStream;
 
 public class gameOfLife {
 	public static final int DEAD = 0;
@@ -182,7 +182,11 @@ public class gameOfLife {
 		while (true) {
 			render(state);
 			state = nextState(state);
-			TimeUnit.SECONDS.sleep(1);
+			Thread.sleep(300);
 		}
+	}
+
+	public static int[][] loadBoardState(String fileName) {
+		InputStream input = gameOfLife.class.getResourceAsStream(fileName);
 	}
 }
