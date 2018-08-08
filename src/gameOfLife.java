@@ -1,4 +1,7 @@
-import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
 
 public class gameOfLife {
 	public static final int DEAD = 0;
@@ -186,7 +189,28 @@ public class gameOfLife {
 		}
 	}
 
-	public static int[][] loadBoardState(String fileName) {
-		InputStream input = gameOfLife.class.getResourceAsStream(fileName);
+	/**
+	 * Loads a board state from the given filepath
+	 * 
+	 * @param fileName
+	 *            the filepath to load the state from/
+	 * @return The board state loaded from the given filepath
+	 * @throws FileNotFoundException
+	 */
+	public static int[][] loadBoardState(String fileName) throws FileNotFoundException {
+		Scanner in = new Scanner(new BufferedReader(new FileReader(fileName)));
+		String[] line = in.nextLine().trim().split(" ");
+		int length = 0;
+		while (in.hasNextLine()) {
+			length++;
+		}
+		int[][] board = gameOfLife.deadState(line.length, length);
+		for (int i = 0; i < length; i++) {
+			for (int j = 0; j < line.length; j++) {
+				board[i][j] = Integer.parseInt(line[j]);
+			}
+		}
+		in.close();
+		return board;
 	}
 }
