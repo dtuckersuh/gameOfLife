@@ -182,7 +182,7 @@ public class gameOfLife {
 		while (true) {
 			render(state);
 			state = nextState(state);
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(1);
 		}
 	}
 }
