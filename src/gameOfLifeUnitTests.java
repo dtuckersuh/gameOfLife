@@ -29,7 +29,7 @@ public class gameOfLifeUnitTests {
 		// gameOfLife.eternalLife(gameOfLife.randomState(5, 10));
 
 		// Toad state
-		gameOfLife.eternalLife(gameOfLife.loadBoardState("toad.txt"));
+		gameOfLife.loadBoardState("toad.txt");
 	}
 
 	public static void compare(int[][] actualState, int[][] expectedState, int testNumber) {
