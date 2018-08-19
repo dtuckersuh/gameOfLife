@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class gameOfLife {
@@ -195,9 +195,9 @@ public class gameOfLife {
 	 * @param fileName
 	 *            the filepath to load the state from/
 	 * @return The board state loaded from the given filepath
-	 * @throws FileNotFoundException
+	 * @throws IOException
 	 */
-	public static int[][] loadBoardState(String fileName) throws FileNotFoundException {
+	public static int[][] loadBoardState(String fileName) throws IOException {
 		Scanner in = new Scanner(new BufferedReader(new FileReader(fileName)));
 		String[] line = in.nextLine().trim().split(" ");
 		int length = 0;
