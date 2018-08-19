@@ -1,9 +1,9 @@
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class gameOfLifeUnitTests {
 
-	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		// Test 1: Dead cells with no live neighbors
 		// should stay dead
 		int[][] currentState = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
@@ -27,8 +27,9 @@ public class gameOfLifeUnitTests {
 
 		compare(currentState4, expectedNextState4, 4);
 		// gameOfLife.eternalLife(gameOfLife.randomState(5, 10));
+
 		// Toad state
-		gameOfLife.eternalLife(gameOfLife.loadBoardState("./toad.txt"));
+		gameOfLife.loadBoardState("toad.txt");
 	}
 
 	public static void compare(int[][] actualState, int[][] expectedState, int testNumber) {

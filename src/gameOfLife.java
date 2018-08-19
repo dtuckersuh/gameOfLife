@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class gameOfLife {
@@ -195,22 +196,25 @@ public class gameOfLife {
 	 * @param fileName
 	 *            the filepath to load the state from/
 	 * @return The board state loaded from the given filepath
-	 * @throws FileNotFoundException
+	 * @throws IOException
 	 */
-	public static int[][] loadBoardState(String fileName) throws FileNotFoundException {
+	public static void loadBoardState(String fileName) throws IOException {
 		Scanner in = new Scanner(new BufferedReader(new FileReader(fileName)));
 		String[] line = in.nextLine().trim().split(" ");
-		int length = 0;
+		System.out.println(Arrays.toString(line));
+		int rows = 1;
+		int columns = line[0].length();
 		while (in.hasNextLine()) {
-			length++;
+			rows++;
+			in.nextLine();
 		}
-		int[][] board = gameOfLife.deadState(line.length, length);
-		for (int i = 0; i < length; i++) {
-			for (int j = 0; j < line.length; j++) {
-				board[i][j] = Integer.parseInt(line[j]);
+		int[][] board = deadState(rows, columns);
+		for (int i = 0; i < rows; i++) {
+			String cells[] = line[i].trim().split(" ");
+			for (int j = 0; j < columns; j++) {
+				board[i][j] = Integer.parseInt(cells[j]);
 			}
 		}
 		in.close();
-		return board;
 	}
 }
