@@ -210,9 +210,10 @@ public class gameOfLife {
 		}
 		int[][] board = deadState(rows, columns);
 		for (int i = 0; i < rows; i++) {
-			String cells[] = line[i].trim().split(" ");
+			String cells[] = in.nextLine().trim().split(" ");
 			for (int j = 0; j < columns; j++) {
 				board[i][j] = Integer.parseInt(cells[j]);
+				System.out.println(board[i][j]);
 			}
 		}
 		in.close();
